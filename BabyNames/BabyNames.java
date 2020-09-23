@@ -56,7 +56,7 @@ public class BabyNames {
     }
     
     public int getRank(int year , String name , String gender){
-        FileResource fr = new FileResource("C:\\Users\\20114\\Desktop\\Java Duke\\BabyNames\\us_babynames_by_year\\yob" + year + ".csv");
+        FileResource fr = new FileResource();
         CSVParser parser = fr.getCSVParser(false);
         int rank = 0;
         for(CSVRecord CR : parser ){
@@ -73,7 +73,7 @@ public class BabyNames {
     }
     
     public String getName(int year , int rank , String gender){
-        FileResource fr = new FileResource("C:\\Users\\20114\\Desktop\\Java Duke\\BabyNames\\us_babynames_by_year\\yob" + year + ".csv");
+        FileResource fr = new FileResource();
         CSVParser parser = fr.getCSVParser(false);
         int count = 0;
         String name = "";
@@ -165,7 +165,7 @@ public class BabyNames {
         FileResource fr = new FileResource();
         CSVParser parser = fr.getCSVParser(false);
         for(CSVRecord record : parser){
-            if(count<nameRank-1){
+            if(record.get(1).equals(gender) && count<nameRank-1){
             count++;
             sum = sum + Integer.parseInt(record.get(2));
         }}
